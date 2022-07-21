@@ -1,0 +1,140 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/AddDice.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/RemoveDice.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Die.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/EduVICWANTBeginner-VariableFont_wght.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/Main.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 4 )
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="Table" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -683, 311 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="Offense Container" type="ColorRect" parent="Table"]
+margin_right = 576.0
+margin_bottom = 552.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.921569, 0.352941, 0.380392, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Table/Offense Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Offense Container" type="MarginContainer" parent="Table/Offense Container/CenterContainer"]
+margin_left = 218.0
+margin_top = 238.0
+margin_right = 358.0
+margin_bottom = 314.0
+
+[node name="Offense Container" type="ColorRect" parent="Table/Offense Container/CenterContainer/Offense Container"]
+margin_right = 140.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.921569, 0.352941, 0.380392, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Table/Offense Container/CenterContainer/Offense Container"]
+margin_right = 140.0
+margin_bottom = 76.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Table/Offense Container/CenterContainer/Offense Container/MarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 136.0
+margin_bottom = 72.0
+alignment = 1
+
+[node name="Offense" type="GridContainer" parent="Table/Offense Container/CenterContainer/Offense Container/MarginContainer/VBoxContainer"]
+margin_right = 132.0
+columns = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Table/Offense Container/CenterContainer/Offense Container/MarginContainer/VBoxContainer"]
+margin_top = 4.0
+margin_right = 132.0
+margin_bottom = 68.0
+
+[node name="AddDice" parent="Table/Offense Container/CenterContainer/Offense Container/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
+parent_path = NodePath("../../Offense")
+
+[node name="RemoveDice" parent="Table/Offense Container/CenterContainer/Offense Container/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 68.0
+margin_right = 132.0
+parent_path = NodePath("../../Offense")
+
+[node name="Probs" type="ColorRect" parent="Table"]
+margin_top = 552.0
+margin_right = 576.0
+margin_bottom = 680.0
+rect_min_size = Vector2( 0, 128 )
+size_flags_horizontal = 3
+color = Color( 0.109804, 0.121569, 0.141176, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Table/Probs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Table/Probs/CenterContainer"]
+margin_left = 92.0
+margin_top = 43.0
+margin_right = 484.0
+margin_bottom = 84.0
+
+[node name="Label" type="Label" parent="Table/Probs/CenterContainer/HBoxContainer"]
+margin_right = 351.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+text = "The Probability of Success is "
+
+[node name="Prob" type="Label" parent="Table/Probs/CenterContainer/HBoxContainer"]
+margin_left = 355.0
+margin_right = 392.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+text = "0%"
+
+[node name="Defense Container" type="ColorRect" parent="Table"]
+margin_top = 680.0
+margin_right = 576.0
+margin_bottom = 1000.0
+rect_min_size = Vector2( 0, 320 )
+size_flags_horizontal = 3
+color = Color( 0.160784, 0.435294, 0.901961, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Table/Defense Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Table/Defense Container/CenterContainer"]
+margin_left = 96.0
+margin_top = 105.0
+margin_right = 479.0
+margin_bottom = 214.0
+
+[node name="Label" type="Label" parent="Table/Defense Container/CenterContainer/VBoxContainer"]
+margin_right = 383.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+text = "How Many Dice Do You Have?"
+
+[node name="Die" parent="Table/Defense Container/CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 45.0
+margin_right = 383.0
+margin_bottom = 109.0
