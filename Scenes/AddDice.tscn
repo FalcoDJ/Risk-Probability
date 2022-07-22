@@ -21,9 +21,10 @@ anchor_bottom = 1.0
 mouse_filter = 1
 
 [node name="Label" type="Label" parent="CenterContainer"]
-margin_left = 18.0
-margin_right = 46.0
-margin_bottom = 71.0
+margin_left = 24.0
+margin_top = 11.0
+margin_right = 40.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )

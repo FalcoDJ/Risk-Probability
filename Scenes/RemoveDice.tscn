@@ -12,7 +12,7 @@ export(NodePath) var parent_path = \"\"
 onready var parent = get_node(parent_path)
 
 func _on_RemoveDice_pressed() -> void:
-	if parent:
+	if parent and parent.get_child_count() > 0:
 		parent.get_children().back().queue_free()
 		return
 	
@@ -23,8 +23,8 @@ func _on_RemoveDice_pressed() -> void:
 script = SubResource( 1 )
 
 [node name="Label" parent="CenterContainer" index="0"]
-margin_left = 20.0
-margin_right = 43.0
+margin_left = 25.0
+margin_right = 38.0
 text = "-"
 
 [connection signal="pressed" from="." to="." method="_on_RemoveDice_pressed"]

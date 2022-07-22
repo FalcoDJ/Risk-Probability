@@ -91,21 +91,44 @@ color = Color( 0.109804, 0.121569, 0.141176, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Table/Probs/CenterContainer"]
-margin_left = 92.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Table/Probs/CenterContainer"]
+margin_left = 58.0
 margin_top = 43.0
-margin_right = 484.0
+margin_right = 517.0
 margin_bottom = 84.0
 
-[node name="Label" type="Label" parent="Table/Probs/CenterContainer/HBoxContainer"]
-margin_right = 351.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Table/Probs/CenterContainer/VBoxContainer"]
+margin_right = 459.0
+margin_bottom = 41.0
+
+[node name="Label" type="Label" parent="Table/Probs/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_right = 418.0
 margin_bottom = 41.0
 custom_fonts/font = SubResource( 1 )
-text = "The Probability of Success is "
+text = "The Probability of True Success is "
 
-[node name="Prob" type="Label" parent="Table/Probs/CenterContainer/HBoxContainer"]
-margin_left = 355.0
-margin_right = 392.0
+[node name="Prob" type="Label" parent="Table/Probs/CenterContainer/VBoxContainer/HBoxContainer"]
+margin_left = 422.0
+margin_right = 459.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+text = "0%"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Table/Probs/CenterContainer/VBoxContainer"]
+visible = false
+margin_top = 45.0
+margin_right = 483.0
+margin_bottom = 86.0
+
+[node name="Label" type="Label" parent="Table/Probs/CenterContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 442.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 1 )
+text = "The Probability of Partial Success is "
+
+[node name="Union_Prob" type="Label" parent="Table/Probs/CenterContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 446.0
+margin_right = 483.0
 margin_bottom = 41.0
 custom_fonts/font = SubResource( 1 )
 text = "0%"
@@ -138,3 +161,10 @@ text = "How Many Dice Do You Have?"
 margin_top = 45.0
 margin_right = 383.0
 margin_bottom = 109.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="pressed" from="Table/Defense Container/CenterContainer/VBoxContainer/Die" to="." method="_on_Die_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
